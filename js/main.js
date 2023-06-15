@@ -1,11 +1,9 @@
 import LoginModal from "./loginModal.js";
 import LoginForm from "./loginForm.js";
+import loginFunction from "./API/loginfunction.js";
 
 const loginBtn = document.querySelector('#loginButton');
 console.log(loginBtn)
-
-console.log(new LoginForm('Вхід').render())
-
 
 
 loginBtn.addEventListener('click', (e) => {
@@ -13,7 +11,13 @@ loginBtn.addEventListener('click', (e) => {
 
     const form = new LoginForm('Вхід');
 
-    new LoginModal(form.render()).render()
+    const confirmRegestration = async () => {
+        const body = form.getValues();
+        const token = await loginFunction(body)
+        console.log(token)
+    };
+
+    new LoginModal(form.getFormElement(), confirmRegestration).render()
 })
 
 

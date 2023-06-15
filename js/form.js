@@ -11,6 +11,22 @@ export default class Form {
         this.form.append(this.formTitle)
     }
 
+    getValues() {
+        const inputs = this.form.querySelectorAll('input');
+        const body = {};
+
+        inputs.forEach(input => {
+            body[input.type] = input.value;
+        })
+
+        return body
+    }
+
+    getFormElement() {
+        this.createElement();
+        return this.form
+    }
+
     render() {
         this.createElement();
     }

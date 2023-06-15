@@ -13,11 +13,6 @@ export default class LoginForm extends Form {
             <input class="modal-input" type="password" placeholder="Пароль" />
         `
         this.form.insertAdjacentHTML('beforeend', inputs);
-        console.log(inputs)
-        console.log(this.form)
     }
 }
 
-// const a = new LoginForm('Вхід')
-
-// console.log(a.render())

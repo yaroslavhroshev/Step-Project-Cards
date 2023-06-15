@@ -3,6 +3,7 @@ export default class LoginModal {
         this.confirmFunction = confirmFunction;
         this.elem = elem;
         this.modal = document.querySelector('.modal')
+        this.modalBackground = document.createElement('div');
         this.modalContent = document.createElement('div');
         this.close = document.createElement('span');
         this.modalButton = document.createElement('button');
@@ -10,6 +11,7 @@ export default class LoginModal {
 
     createElement() {
         this.modalContent.classList.add('modal-content');
+        this.modalBackground.classList.add('modal__background');
         this.modalContent.style.display = 'block'; 
         this.close.classList.add('close');
         this.close.innerHTML = '&times;'
@@ -19,26 +21,29 @@ export default class LoginModal {
         this.modalContent.append(this.close, this.elem, this.modalButton)
     }
 
+    addEventListerners() {
+        this.close.addEventListener('click', () => {
+            this.closer()
+        })
+
+        this.modalBackground.addEventListener('click', () => {
+            this.closer()
+        })
+
+        this.modalButton.addEventListener('click', () => {
+            this.confirmFunction();
+        })
+    }
+
+    closer() {
+        this.modalContent.remove()
+        this.modalBackground.remove()
+    }
+
     render() {
         this.createElement()
-        this.modal.append(this.modalContent)
+        this.addEventListerners() 
+        this.modal.append(this.modalContent, this.modalBackground)
     }
 }
-// new LoginModal().render()
 
-
-
-
-
-// <div id="loginModal" class="modal">
-// <div class="modal-content">
-//   <span class="close">&times;</span>
-//   <h2 class="modal-title">Вхід</h2>
-//   <input
-//     class="modal-input"
-//     type="email"
-//     placeholder="Електронна пошта" />
-//   <input class="modal-input" type="password" placeholder="Пароль" />
-//   <button class="modal-button">Увійти</button>
-// </div>
-// </div>
