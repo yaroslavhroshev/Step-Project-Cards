@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Візити до лікаря</title>
     <link rel="stylesheet" href="./css/main.css" />
+    <script type="module" src="./js/main.js"></script>
+    <!-- <script type="module" src="./js/loginForm.js"></script> -->
   <body>
     <header>
       <div class="logo">
@@ -38,18 +40,17 @@
     <div id="loginModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <h2 class="modal-title">Вхід</h2>
-        <input
-          class="modal-input"
-          type="email"
-          placeholder="Електронна пошта" />
-        <input class="modal-input" type="password" placeholder="Пароль" />
+        <form action="">
+          <h2 class="modal-title">Вхід</h2>
+          <input class="modal-input" type="email" placeholder="Електронна пошта" />
+          <input class="modal-input" type="password" placeholder="Пароль" />
+        </form>
         <button class="modal-button">Увійти</button>
       </div>
     </div>
 
     <!-- Модальне вікно для створення візиту -->
-    <div id="createVisitModal" class="modal">
+    <div id="createVisitModal" >
       <!-- Вміст модального вікна для створення візиту -->
     </div>
 
