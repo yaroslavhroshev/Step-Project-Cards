@@ -42,7 +42,10 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 1;
+}
+
+#addVisitButton {
+  display: none;
 }
 
 .filter-form {
@@ -84,7 +87,10 @@ select {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  /* width: 0; */
   height: 100%;
   display: flex;
   align-items: center;
@@ -103,7 +109,6 @@ select {
 }
 
 .modal-content {
-  /* display: none; */
   background-color: #ebebeb;
   border-radius: 5px;
   padding: 20px;

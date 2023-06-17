@@ -1,24 +1,27 @@
-import LoginModal from "./loginModal.js";
-import LoginForm from "./loginForm.js";
+import LoginModal from "./Classes/loginModal.js";
+import LoginForm from "./Classes/loginForm.js";
 import loginFunction from "./API/loginfunction.js";
+import checkLoginToken from "./Functions/checkLoginToken.js";
 
 const loginBtn = document.querySelector('#loginButton');
-console.log(loginBtn)
 
+checkLoginToken()
 
 loginBtn.addEventListener('click', (e) => {
-    console.log(e.target)
 
     const form = new LoginForm('Вхід');
 
-    const confirmRegestration = async () => {
+    const confirmRegestration = async (closerCallbackFromModal) => {
         const body = form.getValues();
-        const token = await loginFunction(body)
-        console.log(token)
+        const { data } = await loginFunction(body)
+        localStorage.setItem('TOKEN', data)
+        closerCallbackFromModal()
+        checkLoginToken()
     };
 
     new LoginModal(form.getFormElement(), confirmRegestration).render()
 })
+
 
 
 

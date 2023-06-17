@@ -9,8 +9,8 @@ export default class LoginForm extends Form {
     createElement() {
         super.createElement()
         const inputs = `
-            <input class="modal-input" type="email" placeholder="Електронна пошта" />
-            <input class="modal-input" type="password" placeholder="Пароль" />
+            <input class="modal-input" type="email" name="email" placeholder="Електронна пошта" />
+            <input class="modal-input" type="password" name="password" placeholder="Пароль" />
         `
         this.form.insertAdjacentHTML('beforeend', inputs);
     }

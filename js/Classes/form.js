@@ -16,7 +16,7 @@ export default class Form {
         const body = {};
 
         inputs.forEach(input => {
-            body[input.type] = input.value;
+            body[input.name] = input.value;
         })
 
         return body

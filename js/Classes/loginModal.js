@@ -10,9 +10,9 @@ export default class LoginModal {
     }
 
     createElement() {
+        this.modal.style.width = '100%'
         this.modalContent.classList.add('modal-content');
         this.modalBackground.classList.add('modal__background');
-        this.modalContent.style.display = 'block'; 
         this.close.classList.add('close');
         this.close.innerHTML = '&times;'
         this.modalButton.classList.add('modal-button');
@@ -31,11 +31,12 @@ export default class LoginModal {
         })
 
         this.modalButton.addEventListener('click', () => {
-            this.confirmFunction();
+            this.confirmFunction(this.closer.bind(this));
         })
     }
 
     closer() {
+        this.modal.style.width = '0'
         this.modalContent.remove()
         this.modalBackground.remove()
     }
