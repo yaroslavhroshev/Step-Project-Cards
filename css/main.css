@@ -154,3 +154,24 @@ select {
 .modal-button:hover {
   background-color: #45a049;
 }
+
+/*CreateVisit*/
+
+.options-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.options-wrapper textarea {
+  width: 270px;
+}
+
+.select {
+  width: 270px;
+  padding: 5px;
+}
+
+
