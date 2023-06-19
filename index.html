@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Візити до лікаря</title>
     <link rel="stylesheet" href="./css/main.css" />
+    <script type="module" src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <body>
     <header>
       <div class="logo">
@@ -12,6 +14,7 @@
         <h1 class="logo-title">Медікарта</h1>
       </div>
       <button id="loginButton">Вхід</button>
+      <button id="addVisitButton">Додати візит</button>
     </header>
 
     <div class="filter-form">
@@ -36,23 +39,11 @@
 
     <!-- Модальне вікно для входу -->
     <div id="loginModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 class="modal-title">Вхід</h2>
-        <input
-          class="modal-input"
-          type="email"
-          placeholder="Електронна пошта" />
-        <input class="modal-input" type="password" placeholder="Пароль" />
-        <button class="modal-button">Увійти</button>
-      </div>
     </div>
 
     <!-- Модальне вікно для створення візиту -->
-    <div id="createVisitModal" class="modal">
+    <div id="createVisitModal" >
       <!-- Вміст модального вікна для створення візиту -->
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
