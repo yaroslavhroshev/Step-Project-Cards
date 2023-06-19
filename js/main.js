@@ -19,7 +19,7 @@ loginBtn.addEventListener('click', (e) => {
         checkLoginToken()
     };
 
-    new LoginModal(form.getFormElement(), confirmRegestration).render()
+    new LoginModal(form.getFormElement(), confirmRegestration, 'Увійти').render()
 })
 
 

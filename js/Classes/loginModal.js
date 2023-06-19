@@ -1,7 +1,8 @@
 export default class LoginModal {
-    constructor(elem, confirmFunction) {
+    constructor(elem, confirmFunction, buttonValue) {
         this.confirmFunction = confirmFunction;
         this.elem = elem;
+        this.buttonValue = buttonValue;
         this.modal = document.querySelector('.modal')
         this.modalBackground = document.createElement('div');
         this.modalContent = document.createElement('div');
@@ -16,7 +17,7 @@ export default class LoginModal {
         this.close.classList.add('close');
         this.close.innerHTML = '&times;'
         this.modalButton.classList.add('modal-button');
-        this.modalButton.innerText = 'Увійти';
+        this.modalButton.innerHTML = this.buttonValue;
 
         this.modalContent.append(this.close, this.elem, this.modalButton)
     }
