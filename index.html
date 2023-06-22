@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Візити до лікаря</title>
-    <link rel="stylesheet" href="./css/main.css" />
-    <script type="module" src="./js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <body>
-    <header>
-      <div class="logo">
-        <img src="./images/logo.svg" alt="Логотип" />
-        <h1 class="logo-title">Медікарта</h1>
-      </div>
-      <button id="loginButton">Вхід</button>
-      <button id="addVisitButton">Додати візит</button>
-    </header>
 
-    <div class="filter-form">
-      <input type="text" id="searchInput" placeholder="Пошук" />
-      <select id="statusSelect">
-        <option value="">Статус</option>
-        <option value="open">Відкритий</option>
-        <option value="done">Виконаний</option>
-      </select>
-      <select id="prioritySelect">
-        <option value="">Пріоритет</option>
-        <option value="high">Високий</option>
-        <option value="normal">Звичайний</option>
-        <option value="low">Низький</option>
-      </select>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Візити до лікаря</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <script type="module" src="./js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <div id="visitList" class="visit-list">
-      <!-- Список карточок візитів буде додаватись динамічно за допомогою JavaScript -->
-      <div class="no-items">No items have been added.</div>
+<body>
+  <header>
+    <div class="logo">
+      <img src="./images/logo.svg" alt="Логотип" />
+      <h1 class="logo-title">Медікарта</h1>
     </div>
+    <button id="loginButton">Вхід</button>
+    <button id="addVisitButton">Додати візит</button>
+  </header>
 
-    <!-- Модальне вікно для входу -->
-    <div id="loginModal" class="modal">
-    </div>
+  <div class="filter-form">
+    <input type="text" id="searchInput" placeholder="Пошук" />
+    <select id="statusSelect">
+      <option value="">Статус</option>
+      <option value="open">Відкритий</option>
+      <option value="done">Виконаний</option>
+    </select>
+    <select id="prioritySelect">
+      <option value="">Пріоритет</option>
+      <option value="high">Високий</option>
+      <option value="normal">Звичайний</option>
+      <option value="low">Низький</option>
+    </select>
+  </div>
 
-    <!-- Модальне вікно для створення візиту -->
-    <div id="createVisitModal" >
-      <!-- Вміст модального вікна для створення візиту -->
-    </div>
-  </body>
+  <div id="visitList" class="visit-list">
+    <!-- Список карточок візитів буде додаватись динамічно за допомогою JavaScript -->
+    <div class="no-items">No items have been added.</div>
+  </div>
+
+  <!-- Модальне вікно для входу -->
+  <div id="loginModal" class="modal">
+  </div>
+
+  <!-- Модальне вікно для створення візиту -->
+  <div id="createVisitModal">
+    <!-- Вміст модального вікна для створення візиту -->
+  </div>
+</body>
+
 </html>

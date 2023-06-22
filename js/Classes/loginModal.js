@@ -44,7 +44,7 @@ export default class LoginModal {
 
     render() {
         this.createElement()
-        this.addEventListerners() 
+        this.addEventListerners()
         this.modal.append(this.modalContent, this.modalBackground)
     }
 }
