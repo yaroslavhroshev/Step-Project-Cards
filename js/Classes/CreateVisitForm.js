@@ -20,7 +20,7 @@ export default class CreateVisitForm extends Form {
         <option value="normal">Звичайний</option>
         <option value="low">Низький</option>
         </select>`;
-        this.fullName = '<input type="text" name="full_name" placeholder="Прізвище Ім\'я По-батькові ">';
+        this.fullName = '<input type="text" name="fullName" placeholder="Прізвище Ім\'я По-батькові ">';
 
         this.changeFormFunction = changeFormFunction;
     }
