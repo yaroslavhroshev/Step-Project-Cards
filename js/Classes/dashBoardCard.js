@@ -1,11 +1,8 @@
-import deleteElement from "../API/deleteElement.js";
-
 export default class DashBoardCard {
-    constructor(doctor, fullName, id, deleteFunction) {
+    constructor(doctor, fullName, id) {
         this.doctor = doctor;
         this.fullName = fullName;
         this.id = id;
-        this.deleteFunction = deleteFunction;
         this.visitList = document.querySelector(".visit-list");
         this.card = document.createElement('div');
         this.cardContent = document.createElement('div');
@@ -31,29 +28,23 @@ export default class DashBoardCard {
 
       this.buttons.append(this.editButton, this.deleteButton),
       this.card.append(this.cardContent, this.buttons)
-      this.visitList.append(this.card)
+      this.visitList.prepend(this.card)
     }
 
     addEventListerners() { 
-        this.deleteButton.addEventListener('click', () => {
-
-            // deleteElement()
-
-            // this.card.remove();
-
-              axios.delete(`https://ajax.test-danit.com/api/v2/cards/${this.id}`, {
-                headers: {
-                  'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
-                },
-              })
-              .then(response  => {
-                if(response.status === 200) {
-                  this.card.remove();
-                }
-              })
-              .catch(err => console.log(err)) 
+      this.deleteButton.addEventListener('click', () => {
+        axios.delete(`https://ajax.test-danit.com/api/v2/cards/${this.id}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+          },
         })
-        
+        .then(response  => {
+          if(response.status === 200) {
+            this.card.remove();
+          }
+        })
+        .catch(err => console.log(err)) 
+      })
     }
 
     render() {

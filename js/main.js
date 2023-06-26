@@ -9,13 +9,13 @@ import VisitCardiologist from "./Classes/VisitCardiologist.js";
 import postElement from "./API/postElement.js";
 import SmallCard from "./Classes/SmallCards.js";
 import BigCard from "./Classes/BigCards.js";
-import getElement from "./API/getElement.js";
 import DashBoardCard from "./Classes/dashBoardCard.js";
-import deleteElement from "./API/deleteElement.js";
+import renderElements from "./API/renderElements.js";
 
 const loginBtn = document.querySelector("#loginButton");
 
 checkLoginToken();
+renderElements();
 
 loginBtn.addEventListener("click", e => {
   const form = new LoginForm("Вхід");
@@ -26,9 +26,11 @@ loginBtn.addEventListener("click", e => {
     localStorage.setItem("TOKEN", data);
     closerCallbackFromModal();
     checkLoginToken();
+    renderElements();
   };
 
   new LoginModal(form.getFormElement(), confirmRegestration, "Увійти").render();
+
 });
 
 const addVisit = document.querySelector("#addVisitButton");
@@ -63,30 +65,15 @@ addVisit.addEventListener("click", () => {
     closerCallbackFromModal();
     console.log(data);
 
-    const { data: newdata } = await getElement()
-    console.log(newdata)
-    newdata.forEach(({full_name, doctor, id}) => {
-      console.log(full_name)
-      console.log(doctor)
-      console.log(id)
-      new DashBoardCard(doctor, full_name, id).render()
-    });
+    new DashBoardCard(data.doctor, data.fullName, data.id).render()
   };
 
-  // const renderCard = async () => {
-  //   const { data } = await getElement()
-  //   console.log(data)
-  //   data.forEach(({full_name, doctor, id}) => {
-  //     console.log(full_name)
-  //     console.log(doctor)
-  //     console.log(id)
-  //     new DashBoardCard(doctor, full_name, id).render()
-  //   });
-  // };
 
   new LoginModal(form.getFormElement(), confirmRegestration, "Створити", ).render();
 });
 
-// new SmallCard().createElement();
-// new BigCard().createElement();
+
+
+
+
 

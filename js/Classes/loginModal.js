@@ -1,9 +1,8 @@
 export default class LoginModal {
-    constructor(elem, confirmFunction, buttonValue, renderCard) {
+    constructor(elem, confirmFunction, buttonValue) {
         this.confirmFunction = confirmFunction;
         this.elem = elem;
         this.buttonValue = buttonValue;
-        this.renderCard = renderCard;
         this.modal = document.querySelector('.modal')
         this.modalBackground = document.createElement('div');
         this.modalContent = document.createElement('div');
@@ -34,7 +33,6 @@ export default class LoginModal {
 
         this.modalButton.addEventListener('click', () => {
             this.confirmFunction(this.closer.bind(this));
-            this.renderCard();
         })
     }
 
