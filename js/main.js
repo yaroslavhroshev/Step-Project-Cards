@@ -11,11 +11,14 @@ import SmallCard from "./Classes/SmallCards.js";
 import BigCard from "./Classes/BigCards.js";
 import DashBoardCard from "./Classes/dashBoardCard.js";
 import renderElements from "./API/renderElements.js";
+import logOutFunction from "./Functions/logOutFunction.js";
 
 const loginBtn = document.querySelector("#loginButton");
 
 checkLoginToken();
 renderElements();
+logOutFunction();
+
 
 loginBtn.addEventListener("click", e => {
   const form = new LoginForm("Вхід");
