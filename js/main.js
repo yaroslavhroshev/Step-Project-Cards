@@ -20,7 +20,7 @@ checkLoginToken();
 loginBtn.addEventListener("click", e => {
   const form = new LoginForm("Вхід");
 
-  const confirmRegestration = async closerCallbackFromModal => {
+  const confirmRegestration = async (closerCallbackFromModal) => {
     const body = form.getValues();
     const { data } = await loginFunction(body);
     localStorage.setItem("TOKEN", data);
@@ -62,12 +62,10 @@ addVisit.addEventListener("click", () => {
     const { data } = await postElement(body);
     closerCallbackFromModal();
     console.log(data);
-  };
 
-  const renderCard = async () => {
-    const { data } = await getElement()
-    console.log(data)
-    data.forEach(({full_name, doctor, id}) => {
+    const { data: newdata } = await getElement()
+    console.log(newdata)
+    newdata.forEach(({full_name, doctor, id}) => {
       console.log(full_name)
       console.log(doctor)
       console.log(id)
@@ -75,7 +73,18 @@ addVisit.addEventListener("click", () => {
     });
   };
 
-  new LoginModal(form.getFormElement(), confirmRegestration, "Створити", renderCard).render();
+  // const renderCard = async () => {
+  //   const { data } = await getElement()
+  //   console.log(data)
+  //   data.forEach(({full_name, doctor, id}) => {
+  //     console.log(full_name)
+  //     console.log(doctor)
+  //     console.log(id)
+  //     new DashBoardCard(doctor, full_name, id).render()
+  //   });
+  // };
+
+  new LoginModal(form.getFormElement(), confirmRegestration, "Створити", ).render();
 });
 
 // new SmallCard().createElement();

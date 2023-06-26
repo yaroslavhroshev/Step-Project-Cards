@@ -1,10 +1,11 @@
 import deleteElement from "../API/deleteElement.js";
 
 export default class DashBoardCard {
-    constructor(doctor, fullName, id) {
+    constructor(doctor, fullName, id, deleteFunction) {
         this.doctor = doctor;
         this.fullName = fullName;
         this.id = id;
+        this.deleteFunction = deleteFunction;
         this.visitList = document.querySelector(".visit-list");
         this.card = document.createElement('div');
         this.cardContent = document.createElement('div');
@@ -40,13 +41,11 @@ export default class DashBoardCard {
 
             // this.card.remove();
 
-
-            fetch(`https://ajax.test-danit.com/api/v2/cards/${this.id}`, {
-                method: 'DELETE',
+              axios.delete(`https://ajax.test-danit.com/api/v2/cards/${this.id}`, {
                 headers: {
-                    'Authorization': `Bearer 8e36bc4f-439b-46ad-bb21-b018bd82fcf6`
-                  },
-              }) 
+                  'Authorization': `Bearer ${localStorage.getItem('TOKEN')}`
+                },
+              })
               .then(response  => {
                 if(response.status === 200) {
                   this.card.remove();
@@ -54,9 +53,11 @@ export default class DashBoardCard {
               })
               .catch(err => console.log(err)) 
         })
+        
     }
 
     render() {
+      this.card.remove();
         this.addEventListerners()
         this.createElement() 
     }
