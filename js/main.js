@@ -9,6 +9,7 @@ import VisitCardiologist from "./Classes/VisitCardiologist.js";
 import postElement from "./API/postElement.js";
 import SmallCard from "./Classes/SmallCards.js";
 import BigCard from "./Classes/BigCards.js";
+import DashBoardCard from "./Classes/dashBoardCard.js";
 
 const loginBtn = document.querySelector("#loginButton");
 
@@ -35,9 +36,7 @@ console.log(addVisit);
 addVisit.addEventListener("click", () => {
   const checkOptions = optionValue => {
     if (optionValue === "cardiologist") {
-      const cardiologist = new VisitCardiologist(
-        "Створити візит"
-      ).getAdditionalInformation();
+      const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
       return cardiologist;
     }
 
@@ -49,9 +48,7 @@ addVisit.addEventListener("click", () => {
     }
 
     if (optionValue === "dentist") {
-      const dentist = new VisitDentist(
-        "Створити візит"
-      ).getAdditionalInformation();
+      const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
       return dentist;
     }
 
@@ -67,12 +64,13 @@ addVisit.addEventListener("click", () => {
     console.log(data);
   };
 
-  new LoginModal(
-    form.getFormElement(),
-    confirmRegestration,
-    "Створити"
-  ).render();
+  const renderCard = () => {
+    new DashBoardCard('fdfd','dff').render()
+  };
+
+  new LoginModal(form.getFormElement(), confirmRegestration, "Створити", renderCard).render();
 });
 
-new SmallCard().createElement();
-new BigCard().createElement();
+// new SmallCard().createElement();
+// new BigCard().createElement();
+
