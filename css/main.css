@@ -44,6 +44,19 @@ button {
   cursor: pointer;
 }
 
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+#logOutButton {
+  display: none;
+}
+
+#addVisitButton {
+  display: none;
+}
+
 .filter-form {
   display: flex;
   align-items: center;
@@ -56,13 +69,6 @@ select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-.visit-list {
-  margin: 10px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
 }
 
 .no-items {
@@ -79,23 +85,41 @@ select {
   text-align: center;
 }
 
+.hidden {
+  display: block;
+}
+
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  /* width: 0; */
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.modal__background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  z-index: 1;
+}
+
 .modal-content {
-  display: none;
   background-color: #ebebeb;
   border-radius: 5px;
   padding: 20px;
   max-width: 400px;
+  z-index: 2;
 }
 
 .close {
@@ -103,6 +127,7 @@ select {
   font-size: 24px;
   cursor: pointer;
   left: 95%;
+  cursor: pointer;
 }
 
 .close:hover {
@@ -134,4 +159,133 @@ select {
 
 .modal-button:hover {
   background-color: #45a049;
+}
+
+/*CreateVisit*/
+
+.options-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.options-wrapper textarea {
+  width: 270px;
+}
+
+.select {
+  width: 270px;
+  padding: 5px;
+}
+
+/* Стилі для карток візитів  */
+
+.visit-list {
+  margin: 25px 10px 10px 10px;
+}
+
+.visit-list.hidden {
+  display: none;
+}
+
+.card {
+  width: 100%;
+  border-radius: 20px;
+  background-color: #f4f1f1;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.card:hover {
+  background-color: #dfdfdf;
+  box-shadow: 0 0 10px rgba(36, 211, 45, 0.9);
+}
+
+.content-card {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.key-card {
+  font-weight: 600;
+  font-size: 20px;
+  margin-right: 10px;
+  color: #000;
+}
+
+.content-data {
+  color: #ff0000;
+}
+
+.content-doctor {
+  color: #4caf50;
+}
+
+.content-age {
+  color: #4caf50;
+}
+
+.content-full-name {
+  color: #4caf50;
+}
+
+.content-mass {
+  color: #ff0000;
+}
+
+.content-priority {
+  color: #ff0000;
+}
+
+.content-heart-diseases {
+  color: #ff0000;
+}
+
+.content-higher-pressure-number {
+  color: #ff0000;
+}
+
+.content-heart-diseases {
+  color: #ff0000;
+}
+
+.content-description {
+  color: #4caf50;
+}
+
+.content-puprpose {
+  color: #4caf50;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.edit-button {
+  background-color: #4acd3f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.edit-button:hover {
+  box-shadow: 0 0 10px rgba(220, 29, 29, 0.9);
+}
+
+.delete-button {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  box-shadow: 0 0 10px rgba(16, 214, 19, 0.9);
 }
