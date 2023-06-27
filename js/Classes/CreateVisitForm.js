@@ -16,7 +16,7 @@ export default class CreateVisitForm extends Form {
         this.urgency = `
         <legend>Пріорітет</legend>
         <select name="priority" id="prioritySelect">
-        <option value="">...</option>
+        <option value="...">...</option>
         <option value="high">Високий</option>
         <option value="normal">Звичайний</option>
         <option value="low">Низький</option>
@@ -84,6 +84,10 @@ export default class CreateVisitForm extends Form {
     getSelectsValues(body) {
         const selects = this.form.querySelectorAll('select');
         selects.forEach(select => {
+            if (select.value === "...") {
+                this.errorMessage.style.display = "block";
+                throw new Error('Не всі поля вводу були заповнені!')
+            }
             body[select.name] = select.value
         })
 
@@ -105,7 +109,6 @@ export default class CreateVisitForm extends Form {
         const selects = this.form.querySelectorAll('select');
         selects.forEach(select => {
             select.addEventListener('change', (event) => {
-
                 if (event.target.value === "...") {
                     this.errorMessage.style.display = "block";
                     throw new Error('Не всі поля вводу були заповнені!')
