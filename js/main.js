@@ -29,8 +29,6 @@ loginBtn.addEventListener('click', (e) => {
 
 const addVisit = document.querySelector('#addVisitButton');
 
-console.log(addVisit);
-
 addVisit.addEventListener('click', () => {
 
     const checkOptions = (optionValue) => {

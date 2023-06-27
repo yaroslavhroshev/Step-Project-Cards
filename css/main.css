@@ -55,7 +55,7 @@ button {
 }
 
 input[type="text"],
-select {
+select, textarea {
   margin-right: 10px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -157,21 +157,29 @@ select {
 
 /*CreateVisit*/
 
-.options-wrapper {
+.create-visit-form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
-  gap: 10px;
-  margin-bottom: 20px;
+  width: 300px;
+  gap: 3px;
+  padding-bottom: 5px;
 }
 
-.options-wrapper textarea {
-  width: 270px;
+.create-visit-form__additional-options, .create-visit-form__additional-options div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.select {
-  width: 270px;
+.create-visit-form__additional-options input {
+  margin-right: 10px;
   padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-
+.create-visit-form__error-message {
+  font-size: 15px;
+  color: red;
+  display: none;
+}

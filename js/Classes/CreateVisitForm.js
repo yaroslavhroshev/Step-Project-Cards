@@ -9,18 +9,20 @@ export default class CreateVisitForm extends Form {
         this.dentist = document.createElement('option');
         this.emptyOption = document.createElement('option');
         this.optionsWrapper = document.createElement('div');
-        this.additionalInformSection = document.createElement('div');
+        this.additionalOptions = document.createElement('div');
 
-        this.visitPurpose = '<input type="text" name="visit_purpose" placeholder="Мета візиту">';
-        this.visitDesc = '<textarea name="visit_description" id="desc" cols="20" rows="5"  placeholder="Короткий опис візиту"></textarea>';
+        this.visitPurpose = `<legend>Мета візиту</legend><input type="text" name="visit_purpose">`;
+        this.visitDesc = `<legend>Короткий опис візиту</legend><textarea name="visit_description" id="desc" cols="20" rows="2"></textarea>`;
         this.urgency = `
+        <legend>Пріорітет</legend>
         <select name="priority" id="prioritySelect">
-        <option value="">Пріоритет</option>
+        <option value="">...</option>
         <option value="high">Високий</option>
         <option value="normal">Звичайний</option>
         <option value="low">Низький</option>
         </select>`;
-        this.fullName = '<input type="text" name="full_name" placeholder="Прізвище Ім\'я По-батькові ">';
+        this.fullName = `<legend>Прізвище Ім\'я По-батькові</legend><input type="text" name="fullName">`;
+        this.errorMessage = document.createElement('span');
 
         this.changeFormFunction = changeFormFunction;
     }
@@ -28,45 +30,48 @@ export default class CreateVisitForm extends Form {
     createElement() {
         super.createElement()
 
-        this.select.classList.add('select')
-        this.optionsWrapper.classList.add('options-wrapper')
-        this.additionalInformSection.classList.add('additional-inform-section')
+        const selectLegend = document.createElement('legend');
+        selectLegend.textContent = "Оберіть лікаря";
+        this.errorMessage.textContent = '*Всі  поля мають бути обов\'язково заповнені';
+        this.errorMessage.classList.add('create-visit-form__error-message')
 
-        this.select.append(this.emptyOption);
-        this.select.append(this.cardiologist);
-        this.select.append(this.dentist);
-        this.select.append(this.therapist);
-        this.optionsWrapper.append(this.select);
+        this.select.classList.add('create-visit-form__select-doctor')
+        this.optionsWrapper.classList.add('create-visit-form')
+        this.additionalOptions.classList.add('create-visit-form__additional-options')
+
+        this.select.append(this.emptyOption, this.cardiologist, this.dentist, this.therapist)
+        this.optionsWrapper.append(selectLegend, this.select);
 
         this.optionsWrapper.insertAdjacentHTML('beforeend', this.visitPurpose)
         this.optionsWrapper.insertAdjacentHTML('beforeend', this.visitDesc)
         this.optionsWrapper.insertAdjacentHTML('beforeend', this.urgency)
         this.optionsWrapper.insertAdjacentHTML('beforeend', this.fullName)
 
-        this.optionsWrapper.append(this.additionalInformSection);
+        this.optionsWrapper.append(this.additionalOptions);
 
-        this.form.append(this.optionsWrapper)
+        this.form.append(this.optionsWrapper, this.errorMessage)
 
         this.cardiologist.textContent = "Кардіолог";
         this.therapist.textContent = "Терапевт";
         this.dentist.textContent = "Стоматолог";
-        this.emptyOption.textContent = "Оберіть лікаря";
+        this.emptyOption.textContent = "...";
 
         this.cardiologist.value = "cardiologist";
         this.therapist.value = "therapist";
         this.dentist.value = "dentist";
 
         this.select.name = 'doctor';
-
+        this.addtListeners()
 
     }
 
     changeFormByOption(optionValue) {
-        this.additionalInformSection.innerHTML = "";
+        this.additionalOptions.innerHTML = "";
         const additionalElement = this.changeFormFunction(optionValue);
 
         if (additionalElement !== null) {
-            this.additionalInformSection.append(additionalElement);
+            this.additionalOptions.append(additionalElement);
+            this.addtListeners()
         }
     }
 
@@ -79,22 +84,78 @@ export default class CreateVisitForm extends Form {
     getSelectsValues(body) {
         const selects = this.form.querySelectorAll('select');
         selects.forEach(select => {
-            if (select.value === 'Оберіть лікаря') {
-                return
-            }
-            // if (select.value === "") {        // Цей код в розробці 
-            //     throw new Error('Гайки тобі') // Намагаюсь зробити поля обов'язковими для вводу
-            // }
             body[select.name] = select.value
         })
+
         return body
     }
 
-    getTextareaValues(body) {
+    addtListeners() {
         const textareas = this.form.querySelectorAll('textarea');
         textareas.forEach(textarea => {
+            textarea.addEventListener('input', (event) => {
+
+                if (event.target.value !== "") {
+                    this.errorMessage.style.display = "none";
+                }
+
+            })
+        })
+
+        const selects = this.form.querySelectorAll('select');
+        selects.forEach(select => {
+            select.addEventListener('change', (event) => {
+
+                if (event.target.value === "...") {
+                    this.errorMessage.style.display = "block";
+                    throw new Error('Не всі поля вводу були заповнені!')
+                } else {
+                    this.errorMessage.style.display = 'none';
+                }
+
+            })
+        })
+
+        const inputs = this.form.querySelectorAll('input');
+        inputs.forEach(input => {
+
+            input.addEventListener('input', (event) => {
+
+                if (event.target.value !== "") {
+                    this.errorMessage.style.display = "none";
+                }
+
+            })
+
+        })
+    }
+
+    getValues() {
+
+        this.form.querySelectorAll('input').forEach(input => {
+
+            if (input.value === "") {
+                this.errorMessage.style.display = 'block';
+                throw new Error('Не всі поля вводу були заповнені!')
+            }
+        })
+
+        return super.getValues()
+    }
+
+    getTextareaValues(body) {
+
+        const textareas = this.form.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+
+            if (textarea.value === "") {
+                this.errorMessage.style.display = 'block';
+                throw new Error('Не всі поля вводу були заповнені!')
+            }
+
             body[textarea.name] = textarea.value
         })
+
         return body
     }
 

@@ -31,8 +31,8 @@ export default class LoginModal {
             this.closer()
         })
 
-        this.modalButton.addEventListener('click', () => {
-            this.confirmFunction(this.closer.bind(this));
+        this.modalButton.addEventListener('click', (e) => {
+            this.confirmFunction(this.closer.bind(this), e);
         })
     }
 

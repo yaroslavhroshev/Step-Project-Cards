@@ -18,8 +18,7 @@ export default class VisitDentist extends CreateVisitForm {
         dataInput.type = 'date';
         dataInput.name = 'date';
 
-        this.data.append(dataLegend)
-        this.data.append(dataInput)
+        this.data.append(dataLegend, dataInput)
         this.fragment.append(this.data)
     }
 
