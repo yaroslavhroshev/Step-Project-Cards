@@ -12,11 +12,17 @@ import renderElements from "./API/renderElements.js";
 import logOutFunction from "./Functions/logOutFunction.js";
 import filterCard from "./API/filterCard.js";
 import debounce from "./Functions/debounce.js";
+import selectFilterCard from "./API/selectFilterCard.js";
+
 const loginBtn = document.querySelector("#loginButton");
 
+// selectFilterCard();
 checkLoginToken();
 renderElements();
 logOutFunction();
+
+const selectElement = document.getElementById("prioritySelect");
+selectElement.addEventListener("change", selectFilterCard);
 
 const inputSearch = document.querySelector("#searchInput");
 inputSearch.addEventListener("input", debounce(filterCard, 1000));
