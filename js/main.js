@@ -7,23 +7,24 @@ import VisitDentist from "./Classes/VisitDentist.js";
 import VisitTherapist from "./Classes/VisitTherapist.js";
 import VisitCardiologist from "./Classes/VisitCardiologist.js";
 import postElement from "./API/postElement.js";
-import SmallCard from "./Classes/SmallCards.js";
-import BigCard from "./Classes/BigCards.js";
 import DashBoardCard from "./Classes/dashBoardCard.js";
 import renderElements from "./API/renderElements.js";
 import logOutFunction from "./Functions/logOutFunction.js";
-
+import filterCard from "./API/filterCard.js";
+import debounce from "./Functions/debounce.js";
 const loginBtn = document.querySelector("#loginButton");
 
 checkLoginToken();
 renderElements();
 logOutFunction();
 
+const inputSearch = document.querySelector("#searchInput");
+inputSearch.addEventListener("input", debounce(filterCard, 1000));
 
 loginBtn.addEventListener("click", e => {
   const form = new LoginForm("Вхід");
 
-  const confirmRegestration = async (closerCallbackFromModal) => {
+  const confirmRegestration = async closerCallbackFromModal => {
     const body = form.getValues();
     const { data } = await loginFunction(body);
     localStorage.setItem("TOKEN", data);
@@ -33,7 +34,6 @@ loginBtn.addEventListener("click", e => {
   };
 
   new LoginModal(form.getFormElement(), confirmRegestration, "Увійти").render();
-
 });
 
 const addVisit = document.querySelector("#addVisitButton");
@@ -43,17 +43,23 @@ console.log(addVisit);
 addVisit.addEventListener("click", () => {
   const checkOptions = optionValue => {
     if (optionValue === "cardiologist") {
-      const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
+      const cardiologist = new VisitCardiologist(
+        "Створити візит"
+      ).getAdditionalInformation();
       return cardiologist;
     }
 
     if (optionValue === "therapist") {
-      const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
+      const therapist = new VisitTherapist(
+        "Створити візит"
+      ).getAdditionalInformation();
       return therapist;
     }
 
     if (optionValue === "dentist") {
-      const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
+      const dentist = new VisitDentist(
+        "Створити візит"
+      ).getAdditionalInformation();
       return dentist;
     }
 
@@ -68,15 +74,12 @@ addVisit.addEventListener("click", () => {
     closerCallbackFromModal();
     console.log(data);
 
-    new DashBoardCard(data.doctor, data.fullName, data.id).render()
+    new DashBoardCard(data.doctor, data.fullName, data.id).render();
   };
 
-
-  new LoginModal(form.getFormElement(), confirmRegestration, "Створити", ).render();
+  new LoginModal(
+    form.getFormElement(),
+    confirmRegestration,
+    "Створити"
+  ).render();
 });
-
-
-
-
-
-
