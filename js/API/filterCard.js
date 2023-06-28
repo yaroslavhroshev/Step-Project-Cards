@@ -12,6 +12,8 @@ const filterCard = async event => {
 
   document.querySelector(".visit-list").innerHTML = "";
   renderPosts(filter);
+
+  localStorage.setItem("filteredCards", JSON.stringify(filter));
 };
 
 export default filterCard;

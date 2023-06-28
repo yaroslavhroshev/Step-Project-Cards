@@ -13,6 +13,7 @@ import logOutFunction from "./Functions/logOutFunction.js";
 import filterCard from "./API/filterCard.js";
 import debounce from "./Functions/debounce.js";
 import selectFilterCard from "./API/selectFilterCard.js";
+import renderPosts from "./Functions/renderPosts.js";
 
 const loginBtn = document.querySelector("#loginButton");
 
