@@ -14,10 +14,10 @@ import filterCard from "./API/filterCard.js";
 import debounce from "./Functions/debounce.js";
 import selectFilterCard from "./API/selectFilterCard.js";
 
-const loginBtn = document.querySelector('#loginButton');
+const loginBtn = document.querySelector("#loginButton");
 
-checkLoginToken();
 renderElements();
+checkLoginToken();
 logOutFunction();
 
 const selectElement = document.getElementById("prioritySelect");
@@ -50,42 +50,44 @@ loginBtn.addEventListener("click", e => {
     renderElements();
   };
 
-const addVisit = document.querySelector('#addVisitButton');
+  new LoginModal(form.getFormElement(), confirmRegestration, "Увійти").render();
+});
+
+const addVisit = document.querySelector("#addVisitButton");
 
 console.log(addVisit);
 
-addVisit.addEventListener('click', () => {
-
-    const checkOptions = (optionValue) => {
-        if (optionValue === 'cardiologist') {
-            const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
-            return cardiologist
-        }
-        if (optionValue === 'therapist') {
-            const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
-            return therapist
-        }
-        if (optionValue === 'dentist') {
-            const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
-            return dentist
-        }
-        return null
+addVisit.addEventListener("click", () => {
+  const checkOptions = optionValue => {
+    if (optionValue === "cardiologist") {
+      const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
+      return cardiologist;
     }
 
-    const form = new CreateVisitForm("Створити візит", checkOptions);
-    
-    const confirmRegestration = async (closerCallbackFromModal) => {
-        const body = form.getAllUserInfo();
-        const { data } = await postElement(body);
-        closerCallbackFromModal()
-        console.log(data);
-        
-        new DashBoardCard(data.doctor, data.fullName, data.id).render()
-    };
-    new LoginModal(form.getFormElement(), confirmRegestration, "Створити").render()
-})
+    if (optionValue === "therapist") {
+      const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
+      return therapist;
+    }
 
+    if (optionValue === "dentist") {
+      const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
+      return dentist;
+    }
 
+    return null;
+  };
 
+  const form = new CreateVisitForm("Створити візит", checkOptions);
 
+  const confirmRegestration = async closerCallbackFromModal => {
+    const body = form.getAllUserInfo();
+    const { data } = await postElement(body);
+    closerCallbackFromModal();
+    console.log(data);
 
+    new DashBoardCard(data.doctor, data.fullName, data.id).render();
+  };
+
+  new LoginModal(
+    form.getFormElement(),confirmRegestration,"Створити").render();
+});
