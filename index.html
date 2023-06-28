@@ -15,8 +15,11 @@
       <img src="./images/logo.svg" alt="Логотип" />
       <h1 class="logo-title">Медікарта</h1>
     </div>
-    <button id="loginButton">Вхід</button>
-    <button id="addVisitButton">Додати візит</button>
+    <div class="btns">
+      <button id="loginButton">Вхід</button>
+      <button id="logOutButton">Вихід</button>
+      <button id="addVisitButton">Додати візит</button>
+    </div>
   </header>
 
   <div class="filter-form">
@@ -35,8 +38,7 @@
   </div>
 
   <div id="visitList" class="visit-list">
-    <!-- Список карточок візитів буде додаватись динамічно за допомогою JavaScript -->
-    <div class="no-items">No items have been added.</div>
+    <div class="no-items hidden">No items have been added.</div>
   </div>
 
   <!-- Модальне вікно для входу -->

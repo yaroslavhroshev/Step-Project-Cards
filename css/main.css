@@ -44,6 +44,15 @@ button {
   cursor: pointer;
 }
 
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+#logOutButton {
+  display: none;
+}
+
 #addVisitButton {
   display: none;
 }
@@ -62,13 +71,6 @@ select, textarea {
   border-radius: 5px;
 }
 
-.visit-list {
-  margin: 10px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-}
-
 .no-items {
   position: absolute;
   top: 50%;
@@ -81,6 +83,10 @@ select, textarea {
   border-radius: 5px;
   max-width: 80%;
   text-align: center;
+}
+
+.hidden {
+  display: block;
 }
 
 .modal {
@@ -103,7 +109,7 @@ select, textarea {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
   z-index: 1;
 }
@@ -182,4 +188,113 @@ select, textarea {
   font-size: 15px;
   color: red;
   display: none;
+}
+/* Стилі для карток візитів  */
+
+.visit-list {
+  margin: 25px 10px 10px 10px;
+}
+
+.visit-list.hidden {
+  display: none;
+}
+
+.card {
+  width: 100%;
+  border-radius: 20px;
+  background-color: #f4f1f1;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.card:hover {
+  background-color: #dfdfdf;
+  box-shadow: 0 0 10px rgba(36, 211, 45, 0.9);
+}
+
+.content-card {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.key-card {
+  font-weight: 600;
+  font-size: 20px;
+  margin-right: 10px;
+  color: #000;
+}
+
+.content-data {
+  color: #ff0000;
+}
+
+.content-doctor {
+  color: #4caf50;
+}
+
+.content-age {
+  color: #4caf50;
+}
+
+.content-full-name {
+  color: #4caf50;
+}
+
+.content-mass {
+  color: #ff0000;
+}
+
+.content-priority {
+  color: #ff0000;
+}
+
+.content-heart-diseases {
+  color: #ff0000;
+}
+
+.content-higher-pressure-number {
+  color: #ff0000;
+}
+
+.content-heart-diseases {
+  color: #ff0000;
+}
+
+.content-description {
+  color: #4caf50;
+}
+
+.content-puprpose {
+  color: #4caf50;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.edit-button {
+  background-color: #4acd3f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.edit-button:hover {
+  box-shadow: 0 0 10px rgba(220, 29, 29, 0.9);
+}
+
+.delete-button {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  box-shadow: 0 0 10px rgba(16, 214, 19, 0.9);
 }

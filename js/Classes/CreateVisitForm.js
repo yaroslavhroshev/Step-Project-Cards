@@ -21,9 +21,9 @@ export default class CreateVisitForm extends Form {
         <option value="normal">Звичайний</option>
         <option value="low">Низький</option>
         </select>`;
-        this.fullName = `<legend>Прізвище Ім\'я По-батькові</legend><input type="text" name="fullName">`;
-        this.errorMessage = document.createElement('span');
 
+        this.errorMessage = document.createElement('span');
+        this.fullName = `<input type="text" name="fullName" placeholder="Прізвище Ім\'я По-батькові ">`;
         this.changeFormFunction = changeFormFunction;
     }
 
