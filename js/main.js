@@ -10,25 +10,45 @@ import postElement from "./API/postElement.js";
 import DashBoardCard from "./Classes/dashBoardCard.js";
 import renderElements from "./API/renderElements.js";
 import logOutFunction from "./Functions/logOutFunction.js";
+import filterCard from "./API/filterCard.js";
+import debounce from "./Functions/debounce.js";
+import selectFilterCard from "./API/selectFilterCard.js";
 
 const loginBtn = document.querySelector('#loginButton');
 
-checkLoginToken()
+checkLoginToken();
 renderElements();
 logOutFunction();
 
-loginBtn.addEventListener('click', (e) => {
-    const form = new LoginForm('Вхід');
-    const confirmRegestration = async (closerCallbackFromModal) => {
-        const body = form.getValues();
-        const { data } = await loginFunction(body)
-        localStorage.setItem('TOKEN', data)
-        closerCallbackFromModal()
-        checkLoginToken()
-        renderElements();
-    };
-    new LoginModal(form.getFormElement(), confirmRegestration, 'Увійти').render()
-})
+const selectElement = document.getElementById("prioritySelect");
+selectElement.addEventListener("change", selectFilterCard);
+
+const inputElement = document.querySelector("#searchInput");
+inputElement.addEventListener("input", debounce(filterCard, 1000));
+
+const selectedFilter = localStorage.getItem("selectedFilter");
+if (selectedFilter) {
+  document.getElementById("prioritySelect").value = selectedFilter;
+  selectFilterCard();
+}
+
+if (localStorage.getItem("filterCard")) {
+  document.querySelector("#searchInput").value =
+    localStorage.getItem("filterCard");
+  inputElement.addEventListener("input", debounce(filterCard, 1000));
+}
+
+loginBtn.addEventListener("click", e => {
+  const form = new LoginForm("Вхід");
+
+  const confirmRegestration = async closerCallbackFromModal => {
+    const body = form.getValues();
+    const { data } = await loginFunction(body);
+    localStorage.setItem("TOKEN", data);
+    closerCallbackFromModal();
+    checkLoginToken();
+    renderElements();
+  };
 
 const addVisit = document.querySelector('#addVisitButton');
 
