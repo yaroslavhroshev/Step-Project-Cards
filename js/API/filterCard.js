@@ -9,11 +9,12 @@ const filterCard = async event => {
       visit_purpose.includes(event.target.value)
     );
   });
-
   document.querySelector(".visit-list").innerHTML = "";
   renderPosts(filter);
 
-  localStorage.setItem("filteredCards", JSON.stringify(filter));
-};
+  const inputElement = document.querySelector("#searchInput");
+  console.log(inputElement.value);
 
+  localStorage.setItem("filterCard", inputElement.value);
+};
 export default filterCard;

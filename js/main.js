@@ -13,27 +13,30 @@ import logOutFunction from "./Functions/logOutFunction.js";
 import filterCard from "./API/filterCard.js";
 import debounce from "./Functions/debounce.js";
 import selectFilterCard from "./API/selectFilterCard.js";
-import renderPosts from "./Functions/renderPosts.js";
 
 const loginBtn = document.querySelector("#loginButton");
 
-checkLoginToken();
 renderElements();
+checkLoginToken();
 logOutFunction();
-
-const inputElement = document.querySelector("#searchInput");
-inputElement.addEventListener("input", debounce(filterCard, 1000));
 
 const selectElement = document.getElementById("prioritySelect");
 selectElement.addEventListener("change", selectFilterCard);
 
-window.onload = () => {
-  const selectedFilter = localStorage.getItem("selectedFilter");
-  if (selectedFilter) {
-    document.getElementById("prioritySelect").value = selectedFilter;
-    selectFilterCard();
-  }
-};
+const inputElement = document.querySelector("#searchInput");
+inputElement.addEventListener("input", debounce(filterCard, 1000));
+
+const selectedFilter = localStorage.getItem("selectedFilter");
+if (selectedFilter) {
+  document.getElementById("prioritySelect").value = selectedFilter;
+  selectFilterCard();
+}
+
+if (localStorage.getItem("filterCard")) {
+  document.querySelector("#searchInput").value =
+    localStorage.getItem("filterCard");
+  inputElement.addEventListener("input", debounce(filterCard, 1000));
+}
 
 loginBtn.addEventListener("click", e => {
   const form = new LoginForm("Вхід");
