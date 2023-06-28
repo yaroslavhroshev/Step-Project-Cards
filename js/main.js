@@ -40,39 +40,22 @@ console.log(addVisit);
 
 addVisit.addEventListener('click', () => {
 
-    const checkOptions = (optionValue) => {
-
-        if (optionValue === 'cardiologist') {
-            const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
-            return cardiologist
-        }
-
-        if (optionValue === 'therapist') {
-            const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
-            return therapist
-        }
-
-        if (optionValue === 'dentist') {
-            const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
-            return dentist
-        }
-
-        return null
-
+  const checkOptions = (optionValue) => {
+    if (optionValue === 'cardiologist') {
+        const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
+        return cardiologist
     }
-
-    if (optionValue === "therapist") {
-      const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
-      return therapist;
+    if (optionValue === 'therapist') {
+        const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
+        return therapist
     }
-
-    if (optionValue === "dentist") {
-      const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
-      return dentist;
+    if (optionValue === 'dentist') {
+        const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
+        return dentist
     }
+    return null
+  }
 
-    return null;
-  };
 
   const form = new CreateVisitForm("Створити візит", checkOptions);
 
