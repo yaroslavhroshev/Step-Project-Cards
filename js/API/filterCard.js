@@ -9,6 +9,7 @@ const filterCard = async event => {
       visit_purpose.includes(event.target.value)
     );
   });
+
   document.querySelector(".visit-list").innerHTML = "";
   renderPosts(filter);
 };

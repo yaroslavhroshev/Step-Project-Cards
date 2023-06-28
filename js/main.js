@@ -16,7 +16,6 @@ import selectFilterCard from "./API/selectFilterCard.js";
 
 const loginBtn = document.querySelector("#loginButton");
 
-// selectFilterCard();
 checkLoginToken();
 renderElements();
 logOutFunction();

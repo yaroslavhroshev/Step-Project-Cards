@@ -1,3 +1,4 @@
+import getElement from "../API/getElement.js";
 import DashBoardCard from "../Classes/dashBoardCard.js";
 
 const renderPosts = data => {

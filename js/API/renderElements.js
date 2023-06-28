@@ -1,9 +1,11 @@
 import getElement from "./getElement.js";
-import renderPosts from "../Functions/renderPosts.js";
-
+import DashBoardCard from "../Classes/dashBoardCard.js";
 const renderElements = async () => {
   const { data: mewData } = await getElement();
-  renderPosts(mewData);
+
+  mewData.forEach(({ doctor, fullName, id }) => {
+    new DashBoardCard(doctor, fullName, id).render();
+  });
   return mewData;
 };
 export default renderElements;
