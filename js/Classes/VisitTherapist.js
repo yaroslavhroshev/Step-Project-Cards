@@ -4,16 +4,21 @@ export default class VisitTherapist extends CreateVisitForm {
     constructor(title, changeFormFunction) {
         super(title, changeFormFunction)
 
-        this.age = document.createElement('input');
+        this.age = document.createElement('div');
         this.fragment = new DocumentFragment();
     }
 
     createElement() {
         super.createElement();
 
-        this.age.type = 'number';
-        this.age.name = 'age';
+        const ageLegend = document.createElement('legend');
+        const ageInput = document.createElement('input');
 
+        ageLegend.textContent = 'Вік';
+        ageInput.type = 'number';
+        ageInput.name = 'age';
+
+        this.age.append(ageLegend, ageInput)
         this.fragment.append(this.age)
     }
 
