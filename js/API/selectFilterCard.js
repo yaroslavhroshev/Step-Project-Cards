@@ -13,6 +13,12 @@ const selectFilterCard = async () => {
   });
 
   renderPosts(filterCard);
+
+  if (selectedValue === "prior") {
+    renderElements();
+  }
+
+  localStorage.setItem("selectedFilter", selectedValue);
 };
 
 export default selectFilterCard;

@@ -20,11 +20,19 @@ checkLoginToken();
 renderElements();
 logOutFunction();
 
+const inputElement = document.querySelector("#searchInput");
+inputElement.addEventListener("input", debounce(filterCard, 1000));
+
 const selectElement = document.getElementById("prioritySelect");
 selectElement.addEventListener("change", selectFilterCard);
 
-const inputSearch = document.querySelector("#searchInput");
-inputSearch.addEventListener("input", debounce(filterCard, 1000));
+window.onload = () => {
+  const selectedFilter = localStorage.getItem("selectedFilter");
+  if (selectedFilter) {
+    document.getElementById("prioritySelect").value = selectedFilter;
+    selectFilterCard();
+  }
+};
 
 loginBtn.addEventListener("click", e => {
   const form = new LoginForm("Вхід");
