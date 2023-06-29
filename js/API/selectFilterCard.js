@@ -7,15 +7,34 @@ const selectFilterCard = async () => {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
   const selectedValue = selectedOption.value;
 
-  document.querySelector(".visit-list").innerHTML = "";
-  const filterCard = selectFilter.filter(({ priority }) => {
-    return selectedValue === priority;
-  });
+  const searchTerm = document.getElementById("searchInput").value.toLowerCase();
 
-  renderPosts(filterCard);
+  document.querySelector(".visit-list").innerHTML = "";
 
   if (selectedValue === "prior") {
-    renderElements();
+    const filterCard = selectFilter.filter(
+      ({ priority, doctor, visit_purpose }) => {
+        return (
+          priority === selectedValue ||
+          doctor.toLowerCase().includes(searchTerm) ||
+          visit_purpose.toLowerCase().includes(searchTerm)
+        );
+      }
+    );
+    renderPosts(filterCard);
+  } else if (selectedValue !== "all") {
+    const filterCard = selectFilter.filter(({ priority }) => {
+      return selectedValue === priority;
+    });
+    renderPosts(filterCard);
+  } else {
+    const filterCard = selectFilter.filter(({ doctor, visit_purpose }) => {
+      return (
+        doctor.toLowerCase().includes(searchTerm) ||
+        visit_purpose.toLowerCase().includes(searchTerm)
+      );
+    });
+    renderPosts(filterCard);
   }
 
   localStorage.setItem("selectedFilter", selectedValue);
