@@ -32,12 +32,6 @@ if (selectedFilter) {
   selectFilterCard();
 }
 
-if (localStorage.getItem("filterCard")) {
-  document.querySelector("#searchInput").value =
-    localStorage.getItem("filterCard");
-  inputElement.addEventListener("input", debounce(filterCard, 1000));
-}
-
 loginBtn.addEventListener("click", e => {
   const form = new LoginForm("Вхід");
 

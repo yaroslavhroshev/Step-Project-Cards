@@ -58,9 +58,13 @@ button {
 }
 
 .filter-form {
-  display: flex;
+  display: none;
   align-items: center;
   margin: 10px;
+}
+
+.flex {
+  display: flex;
 }
 
 input[type="text"],
@@ -205,6 +209,7 @@ select, textarea {
   background-color: #f4f1f1;
   padding: 20px;
   margin-bottom: 15px;
+  cursor: move;
 }
 
 .card:hover {
@@ -297,4 +302,8 @@ select, textarea {
 
 .delete-button:hover {
   box-shadow: 0 0 10px rgba(16, 214, 19, 0.9);
+}
+
+.highlight {
+  border: 2px dashed #2acd1b;
 }
