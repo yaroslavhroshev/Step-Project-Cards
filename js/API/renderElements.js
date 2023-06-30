@@ -1,13 +1,16 @@
 import getElement from "./getElement.js";
 import DashBoardCard from "../Classes/dashBoardCard.js";
+import editModalFunction from "../Functions/editModalFunctioin.js";
+import textHiddenFunction from "../Functions/textHiddenFunction.js";
 
 const renderElements = async () => {
 
-    const { data: mewData} = await getElement()
+  const { data: mewData } = await getElement()
 
-    mewData.forEach(({doctor, fullName, id}) => {
-      new DashBoardCard(doctor, fullName, id).render()
-    });
+  mewData.forEach((userObj) => {
+    new DashBoardCard(userObj.doctor, userObj["full_name"], userObj.id, userObj, editModalFunction, textHiddenFunction).render()
+  });
+  textHiddenFunction()
 }
 
 export default renderElements;

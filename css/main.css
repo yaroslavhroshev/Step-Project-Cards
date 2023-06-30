@@ -298,3 +298,17 @@ select, textarea {
 .delete-button:hover {
   box-shadow: 0 0 10px rgba(16, 214, 19, 0.9);
 }
+
+.show-more-button, .hide-button {
+  background-color: #337ab7;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.show-more-button:hover, .hide-button:hover {
+  box-shadow: 0 0 10px rgba(51, 122, 183, 0.9);
+}
+

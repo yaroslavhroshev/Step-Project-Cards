@@ -11,24 +11,62 @@ export default class CreateVisitForm extends Form {
         this.optionsWrapper = document.createElement('div');
         this.additionalOptions = document.createElement('div');
 
-        this.visitPurpose = `<legend>Мета візиту</legend><input type="text" name="visit_purpose">`;
-        this.visitDesc = `<legend>Короткий опис візиту</legend><textarea name="visit_description" id="desc" cols="20" rows="2"></textarea>`;
-        this.urgency = `
-        <legend>Пріорітет</legend>
-        <select name="priority" id="prioritySelect">
-        <option value="...">...</option>
-        <option value="high">Високий</option>
-        <option value="normal">Звичайний</option>
-        <option value="low">Низький</option>
-        </select>`;
+        this.visitPurpose = document.createElement('input');;
+        this.visitDesc = document.createElement('textarea');
+        this.urgency = document.createElement('select');
+        this.fullName = document.createElement('input');
+
+        this.priorityOptionEmptyValue = document.createElement('option');
+        this.priorityOptionHigh = document.createElement('option');
+        this.priorityOptionNormal = document.createElement('option');
+        this.priorityOptionLow = document.createElement('option');
 
         this.errorMessage = document.createElement('span');
-        this.fullName = `<input type="text" name="fullName" placeholder="Прізвище Ім\'я По-батькові ">`;
         this.changeFormFunction = changeFormFunction;
     }
 
     createElement() {
         super.createElement()
+
+        const visitPurposeLegend = document.createElement('legend');
+        visitPurposeLegend.textContent = 'Мета візиту';
+
+        this.visitPurpose.type = 'text';
+        this.visitPurpose.name = 'visit_purpose';
+
+        this.visitDesc.name = 'visit_description';
+        this.visitDesc.id = 'desc';
+        this.visitDesc.cols = 20;
+        this.visitDesc.rows = 2;
+
+        const visitDescLegend = document.createElement('legend');
+        visitDescLegend.textContent = 'Короткий опис візиту';
+
+        const selectLegendElem = document.createElement('legend');
+        selectLegendElem.textContent = 'Пріорітет';
+
+        this.urgency.name = 'priority';
+        this.urgency.id = 'prioritySelect';
+
+        this.priorityOptionEmptyValue.value = '...';
+        this.priorityOptionEmptyValue.textContent = '...';
+
+        this.priorityOptionHigh.value = 'high';
+        this.priorityOptionHigh.textContent = 'Високий';
+
+        this.priorityOptionNormal.value = 'normal';
+        this.priorityOptionNormal.textContent = 'Звичайний';
+
+        this.priorityOptionLow.value = 'low';
+        this.priorityOptionLow.textContent = 'Низький';
+
+        this.urgency.append(this.priorityOptionEmptyValue, this.priorityOptionHigh, this.priorityOptionNormal, this.priorityOptionLow);
+
+        const fullNameLegend = document.createElement('legend');
+        fullNameLegend.textContent = 'Прізвище Ім\'я По-батькові';
+
+        this.fullName.type = 'text';
+        this.fullName.name = 'full_name';
 
         const selectLegend = document.createElement('legend');
         selectLegend.textContent = "Оберіть лікаря";
@@ -42,10 +80,7 @@ export default class CreateVisitForm extends Form {
         this.select.append(this.emptyOption, this.cardiologist, this.dentist, this.therapist)
         this.optionsWrapper.append(selectLegend, this.select);
 
-        this.optionsWrapper.insertAdjacentHTML('beforeend', this.visitPurpose)
-        this.optionsWrapper.insertAdjacentHTML('beforeend', this.visitDesc)
-        this.optionsWrapper.insertAdjacentHTML('beforeend', this.urgency)
-        this.optionsWrapper.insertAdjacentHTML('beforeend', this.fullName)
+        this.optionsWrapper.append(visitPurposeLegend, this.visitPurpose, visitDescLegend, this.visitDesc, selectLegendElem, this.urgency, fullNameLegend, this.fullName)
 
         this.optionsWrapper.append(this.additionalOptions);
 

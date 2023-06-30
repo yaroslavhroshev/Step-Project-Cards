@@ -1,6 +1,5 @@
 const checkLoginToken = () => {
     const token = localStorage.getItem('TOKEN')
-    console.log(token)
 
     if (token) {
         const loginButton = document.getElementById('loginButton');

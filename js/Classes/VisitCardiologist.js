@@ -13,6 +13,7 @@ export default class VisitCardiologist extends CreateVisitForm {
 
     createElement() {
         super.createElement();
+        this.pressure.classList.add('js-pressure')
         const pressureLegend = document.createElement('legend');
         pressureLegend.textContent = 'Тиск';
         const upperInput = document.createElement('input');
@@ -25,6 +26,7 @@ export default class VisitCardiologist extends CreateVisitForm {
         lowerInput.name = 'lower_pressure_number';
         this.pressure.append(pressureLegend, upperInput, lowerInput);
 
+        this.bodyMassIndex.classList.add('js-body-mass-index')
         const bodyMassLegend = document.createElement('legend');
         bodyMassLegend.textContent = 'Індекс маси тіла';
         const bodyMassInput = document.createElement('input');
@@ -32,12 +34,14 @@ export default class VisitCardiologist extends CreateVisitForm {
         bodyMassInput.name = 'body_mass_index';
         this.bodyMassIndex.append(bodyMassLegend, bodyMassInput)
 
+        this.heartDiseases.classList.add('js-heart-diseases')
         const heartDiseasesLegend = document.createElement('legend');
         heartDiseasesLegend.textContent = 'Перенесені захворювання сердцево-судинної системи';
         const heartDiseasesTextarea = document.createElement('textarea');
         heartDiseasesTextarea.name = 'heart_diseases';
         this.heartDiseases.append(heartDiseasesLegend, heartDiseasesTextarea);
 
+        this.age.classList.add('js-age-cardiologist')
         const ageLegend = document.createElement('legend');
         ageLegend.textContent = 'Вік';
         const ageInput = document.createElement('input');

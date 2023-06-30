@@ -3,13 +3,13 @@ import LoginForm from "./Classes/loginForm.js";
 import loginFunction from "./API/loginfunction.js";
 import checkLoginToken from "./Functions/checkLoginToken.js";
 import CreateVisitForm from "./Classes/CreateVisitForm.js";
-import VisitDentist from "./Classes/VisitDentist.js";
-import VisitTherapist from "./Classes/VisitTherapist.js";
-import VisitCardiologist from "./Classes/VisitCardiologist.js";
 import postElement from "./API/postElement.js";
 import DashBoardCard from "./Classes/dashBoardCard.js";
 import renderElements from "./API/renderElements.js";
 import logOutFunction from "./Functions/logOutFunction.js";
+import checkOptions from "./Functions/checkOptions.js";
+import editModalFunction from "./Functions/editModalFunctioin.js";
+import textHiddenFunction from "./Functions/textHiddenFunction.js";
 
 const loginBtn = document.querySelector('#loginButton');
 
@@ -17,7 +17,7 @@ checkLoginToken()
 renderElements();
 logOutFunction();
 
-loginBtn.addEventListener('click', (e) => {
+loginBtn.addEventListener('click', () => {
     const form = new LoginForm('Вхід');
     const confirmRegestration = async (closerCallbackFromModal) => {
         const body = form.getValues();
@@ -26,43 +26,26 @@ loginBtn.addEventListener('click', (e) => {
         closerCallbackFromModal()
         checkLoginToken()
         renderElements();
+        textHiddenFunction()
     };
     new LoginModal(form.getFormElement(), confirmRegestration, 'Увійти').render()
 })
 
 const addVisit = document.querySelector('#addVisitButton');
 
-console.log(addVisit);
-
 addVisit.addEventListener('click', () => {
 
-    const checkOptions = (optionValue) => {
-        if (optionValue === 'cardiologist') {
-            const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
-            return cardiologist
-        }
-        if (optionValue === 'therapist') {
-            const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
-            return therapist
-        }
-        if (optionValue === 'dentist') {
-            const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
-            return dentist
-        }
-        return null
-    }
-
     const form = new CreateVisitForm("Створити візит", checkOptions);
-    
-    const confirmRegestration = async (closerCallbackFromModal) => {
+
+    const confirmCreateVisitCard = async (closerCallbackFromModal) => {
         const body = form.getAllUserInfo();
         const { data } = await postElement(body);
         closerCallbackFromModal()
-        console.log(data);
-        
-        new DashBoardCard(data.doctor, data.fullName, data.id).render()
+
+        new DashBoardCard(data.doctor, data["full_name"], data.id, data, editModalFunction, textHiddenFunction).render()
+        textHiddenFunction()
     };
-    new LoginModal(form.getFormElement(), confirmRegestration, "Створити").render()
+    new LoginModal(form.getFormElement(), confirmCreateVisitCard, "Створити").render()
 })
 
 
