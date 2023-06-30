@@ -10,11 +10,14 @@ import logOutFunction from "./Functions/logOutFunction.js";
 import checkOptions from "./Functions/checkOptions.js";
 import editModalFunction from "./Functions/editModalFunctioin.js";
 import textHiddenFunction from "./Functions/textHiddenFunction.js";
+import filterCard from "./API/filterCard.js";
+import debounce from "./Functions/debounce.js";
+import selectFilterCard from "./API/selectFilterCard.js";
 
-const loginBtn = document.querySelector('#loginButton');
+const loginBtn = document.querySelector("#loginButton");
 
-checkLoginToken()
 renderElements();
+checkLoginToken();
 logOutFunction();
 
 loginBtn.addEventListener('click', () => {
@@ -31,7 +34,34 @@ loginBtn.addEventListener('click', () => {
     new LoginModal(form.getFormElement(), confirmRegestration, 'Увійти').render()
 })
 
-const addVisit = document.querySelector('#addVisitButton');
+const selectElement = document.getElementById("prioritySelect");
+selectElement.addEventListener("change", selectFilterCard);
+
+const inputElement = document.querySelector("#searchInput");
+inputElement.addEventListener("input", debounce(filterCard, 1000));
+
+const selectedFilter = localStorage.getItem("selectedFilter");
+if (selectedFilter) {
+  document.getElementById("prioritySelect").value = selectedFilter;
+  selectFilterCard();
+}
+
+loginBtn.addEventListener("click", e => {
+  const form = new LoginForm("Вхід");
+
+  const confirmRegestration = async closerCallbackFromModal => {
+    const body = form.getValues();
+    const { data } = await loginFunction(body);
+    localStorage.setItem("TOKEN", data);
+    closerCallbackFromModal();
+    checkLoginToken();
+    renderElements();
+  };
+
+  new LoginModal(form.getFormElement(), confirmRegestration, "Увійти").render();
+});
+
+const addVisit = document.querySelector("#addVisitButton");
 
 addVisit.addEventListener('click', () => {
 
@@ -46,9 +76,4 @@ addVisit.addEventListener('click', () => {
         textHiddenFunction()
     };
     new LoginModal(form.getFormElement(), confirmCreateVisitCard, "Створити").render()
-})
-
-
-
-
-
+});

@@ -63,7 +63,7 @@ export default class DashBoardCard {
     this.hideButton.style.display = 'none';
 
     this.buttons.append(this.showMoreButton, this.hideButton, this.editButton, this.deleteButton),
-      this.card.append(this.cardContent, this.buttons)
+    this.card.append(this.cardContent, this.buttons)
 
   }
 
