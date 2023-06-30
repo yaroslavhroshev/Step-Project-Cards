@@ -6,36 +6,34 @@ const selectFilterCard = async () => {
   const selectElement = document.getElementById("prioritySelect");
   const selectedOption = selectElement.options[selectElement.selectedIndex];
   const selectedValue = selectedOption.value;
-
   const searchTerm = document.getElementById("searchInput").value.toLowerCase();
 
   document.querySelector(".visit-list").innerHTML = "";
 
+  let filterCard;
+
   if (selectedValue === "prior") {
-    const filterCard = selectFilter.filter(
-      ({ priority, doctor, visit_purpose }) => {
-        return (
-          priority === selectedValue ||
-          doctor.toLowerCase().includes(searchTerm) ||
-          visit_purpose.toLowerCase().includes(searchTerm)
-        );
-      }
-    );
-    renderPosts(filterCard);
+    filterCard = selectFilter.filter(({ priority, doctor, visit_purpose }) => {
+      return (
+        priority === selectedValue ||
+        doctor.toLowerCase().includes(searchTerm) ||
+        visit_purpose.toLowerCase().includes(searchTerm)
+      );
+    });
   } else if (selectedValue !== "all") {
-    const filterCard = selectFilter.filter(({ priority }) => {
+    filterCard = selectFilter.filter(({ priority }) => {
       return selectedValue === priority;
     });
-    renderPosts(filterCard);
   } else {
-    const filterCard = selectFilter.filter(({ doctor, visit_purpose }) => {
+    filterCard = selectFilter.filter(({ doctor, visit_purpose }) => {
       return (
         doctor.toLowerCase().includes(searchTerm) ||
         visit_purpose.toLowerCase().includes(searchTerm)
       );
     });
-    renderPosts(filterCard);
   }
+
+  renderPosts(filterCard);
 
   localStorage.setItem("selectedFilter", selectedValue);
 };
