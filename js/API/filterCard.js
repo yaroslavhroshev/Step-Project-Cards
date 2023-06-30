@@ -1,5 +1,7 @@
 import renderElements from "./renderElements.js";
 import renderPosts from "../Functions/renderPosts.js";
+import dragNdropFunction from "../Functions/dragNdropFunction.js";
+import textHiddenFunction from "../Functions/textHiddenFunction.js";
 
 const filterCard = async event => {
   const filterData = await renderElements();
@@ -24,6 +26,8 @@ const filterCard = async event => {
     });
     document.querySelector(".visit-list").innerHTML = "";
     renderPosts(filter);
+    dragNdropFunction()
+    textHiddenFunction()
   }
 };
 

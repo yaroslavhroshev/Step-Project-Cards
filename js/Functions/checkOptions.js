@@ -3,15 +3,15 @@ import VisitTherapist from "../Classes/VisitTherapist.js";
 import VisitDentist from "../Classes/VisitDentist.js";
 
 const checkOptions = (optionValue) => {
-    if (optionValue === 'cardiologist') {
+    if (optionValue === 'кардіолог') {
         const cardiologist = new VisitCardiologist("Створити візит").getAdditionalInformation();
         return cardiologist
     }
-    if (optionValue === 'therapist') {
+    if (optionValue === 'терапевт') {
         const therapist = new VisitTherapist("Створити візит").getAdditionalInformation();
         return therapist
     }
-    if (optionValue === 'dentist') {
+    if (optionValue === 'стоматолог') {
         const dentist = new VisitDentist("Створити візит").getAdditionalInformation();
         return dentist
     }

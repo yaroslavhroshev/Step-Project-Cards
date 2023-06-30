@@ -91,9 +91,9 @@ export default class CreateVisitForm extends Form {
         this.dentist.textContent = "Стоматолог";
         this.emptyOption.textContent = "...";
 
-        this.cardiologist.value = "cardiologist";
-        this.therapist.value = "therapist";
-        this.dentist.value = "dentist";
+        this.cardiologist.value = "кардіолог";
+        this.therapist.value = "терапевт";
+        this.dentist.value = "стоматолог";
 
         this.select.name = 'doctor';
         this.addtListeners()

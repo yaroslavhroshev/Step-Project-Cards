@@ -1,9 +1,8 @@
-
 const textHiddenFunction = () => {
     if (document.querySelector('#visitList').querySelector('.card') !== null) {
-        document.querySelector('.no-items').style.display = 'none';
+        document.querySelector('.no-items').classList.remove('hidden');
     } else {
-        document.querySelector('.no-items').style.display = 'block';
+        document.querySelector('.no-items').classList.add('hidden');
     }
 }
 

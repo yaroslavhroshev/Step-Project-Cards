@@ -17,7 +17,7 @@ export default class EditCardForm extends CreateVisitForm {
         this.fullName.value = full_name;
 
 
-        if (doctor === 'cardiologist') {
+        if (doctor === 'кардіолог') {
             this.cardiologist.selected = true;
 
             this.additionalOptions.querySelector('.js-pressure').querySelector('input').value = this.userInfoObj["higher_pressure_number"];
@@ -29,12 +29,12 @@ export default class EditCardForm extends CreateVisitForm {
 
         }
 
-        if (doctor === 'therapist') {
+        if (doctor === 'терапевт') {
             this.therapist.selected = true;
             this.additionalOptions.querySelector('.js-age-therapist').querySelector('input').value = this.userInfoObj["age"];
         }
 
-        if (doctor === 'dentist') {
+        if (doctor === 'стоматолог') {
             this.dentist.selected = true;
             this.additionalOptions.querySelector('.js-date').querySelector('input').value = this.userInfoObj["date"];
         }

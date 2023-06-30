@@ -6,7 +6,7 @@ import dragNdropFunction from "../Functions/dragNdropFunction.js";
 
 const renderElements = async () => {
   const { data: mewData } = await getElement();
-  
+
   mewData.forEach((userObj) => {
     new DashBoardCard(userObj.doctor, userObj["full_name"], userObj.id, userObj, editModalFunction, textHiddenFunction).render()
   });

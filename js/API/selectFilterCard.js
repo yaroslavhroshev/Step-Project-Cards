@@ -1,5 +1,6 @@
 import renderElements from "./renderElements.js";
 import renderPosts from "../Functions/renderPosts.js";
+import textHiddenFunction from "../Functions/textHiddenFunction.js";
 
 const selectFilterCard = async () => {
   const selectFilter = await renderElements();
@@ -34,6 +35,8 @@ const selectFilterCard = async () => {
   }
 
   renderPosts(filterCard);
+  textHiddenFunction()
+
 
   localStorage.setItem("selectedFilter", selectedValue);
 };

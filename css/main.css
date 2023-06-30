@@ -87,6 +87,7 @@ select, textarea {
   border-radius: 5px;
   max-width: 80%;
   text-align: center;
+  display: none;
 }
 
 .hidden {

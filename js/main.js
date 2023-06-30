@@ -19,19 +19,22 @@ const loginBtn = document.querySelector("#loginButton");
 renderElements();
 checkLoginToken();
 logOutFunction();
+textHiddenFunction()
 
 loginBtn.addEventListener('click', () => {
-    const form = new LoginForm('Вхід');
-    const confirmRegestration = async (closerCallbackFromModal) => {
-        const body = form.getValues();
-        const { data } = await loginFunction(body)
-        localStorage.setItem('TOKEN', data)
-        closerCallbackFromModal()
-        checkLoginToken()
-        renderElements();
-        textHiddenFunction()
-    };
-    new LoginModal(form.getFormElement(), confirmRegestration, 'Увійти').render()
+  const form = new LoginForm('Вхід');
+  const confirmRegestration = async (closerCallbackFromModal) => {
+    const body = form.getValues();
+    const { data } = await loginFunction(body)
+    localStorage.setItem('TOKEN', data)
+    closerCallbackFromModal()
+    checkLoginToken()
+    renderElements();
+    document.querySelector('.no-items').classList.add('hidden');
+    textHiddenFunction()
+
+  };
+  new LoginModal(form.getFormElement(), confirmRegestration, 'Увійти').render()
 })
 
 const selectElement = document.getElementById("prioritySelect");
@@ -46,34 +49,19 @@ if (selectedFilter) {
   selectFilterCard();
 }
 
-loginBtn.addEventListener("click", e => {
-  const form = new LoginForm("Вхід");
-
-  const confirmRegestration = async closerCallbackFromModal => {
-    const body = form.getValues();
-    const { data } = await loginFunction(body);
-    localStorage.setItem("TOKEN", data);
-    closerCallbackFromModal();
-    checkLoginToken();
-    renderElements();
-  };
-
-  new LoginModal(form.getFormElement(), confirmRegestration, "Увійти").render();
-});
-
 const addVisit = document.querySelector("#addVisitButton");
 
 addVisit.addEventListener('click', () => {
 
-    const form = new CreateVisitForm("Створити візит", checkOptions);
+  const form = new CreateVisitForm("Створити візит", checkOptions);
 
-    const confirmCreateVisitCard = async (closerCallbackFromModal) => {
-        const body = form.getAllUserInfo();
-        const { data } = await postElement(body);
-        closerCallbackFromModal()
+  const confirmCreateVisitCard = async (closerCallbackFromModal) => {
+    const body = form.getAllUserInfo();
+    const { data } = await postElement(body);
+    closerCallbackFromModal()
 
-        new DashBoardCard(data.doctor, data["full_name"], data.id, data, editModalFunction, textHiddenFunction).render()
-        textHiddenFunction()
-    };
-    new LoginModal(form.getFormElement(), confirmCreateVisitCard, "Створити").render()
+    new DashBoardCard(data.doctor, data["full_name"], data.id, data, editModalFunction, textHiddenFunction).render()
+    textHiddenFunction()
+  };
+  new LoginModal(form.getFormElement(), confirmCreateVisitCard, "Створити").render()
 });
