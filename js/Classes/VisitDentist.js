@@ -4,22 +4,23 @@ export default class VisitDentist extends CreateVisitForm {
     constructor(title, changeFormFunction) {
         super(title, changeFormFunction)
 
-        this.data = document.createElement('div');
+        this.date = document.createElement('div');
         this.fragment = new DocumentFragment();
     }
 
     createElement() {
         super.createElement();
 
-        const dataLegend = document.createElement('legend');
-        const dataInput = document.createElement('input');
+        const dateLegend = document.createElement('legend');
+        const dateInput = document.createElement('input');
 
-        dataLegend.textContent = 'Дата останнього візиту';
-        dataInput.type = 'date';
-        dataInput.name = 'date';
+        this.date.classList.add('js-date');
+        dateLegend.textContent = 'Дата останнього візиту';
+        dateInput.type = 'date';
+        dateInput.name = 'date';
 
-        this.data.append(dataLegend, dataInput)
-        this.fragment.append(this.data)
+        this.date.append(dateLegend, dateInput)
+        this.fragment.append(this.date)
     }
 
     getAdditionalInformation() {
