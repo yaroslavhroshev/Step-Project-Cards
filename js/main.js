@@ -60,19 +60,8 @@ addVisit.addEventListener("click", () => {
     const { data } = await postElement(body);
     closerCallbackFromModal();
 
-    new DashBoardCard(
-      data.doctor,
-      data["full_name"],
-      data.id,
-      data,
-      editModalFunction,
-      textHiddenFunction
-    ).render();
+    new DashBoardCard(data.doctor, data["full_name"], data.id, data, editModalFunction, textHiddenFunction).render();
     textHiddenFunction();
   };
-  new LoginModal(
-    form.getFormElement(),
-    confirmCreateVisitCard,
-    "Створити"
-  ).render();
+  new LoginModal(form.getFormElement(), confirmCreateVisitCard, "Створити").render();
 });
