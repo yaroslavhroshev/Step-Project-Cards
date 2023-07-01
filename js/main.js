@@ -19,23 +19,24 @@ const loginBtn = document.querySelector("#loginButton");
 renderElements();
 checkLoginToken();
 logOutFunction();
-textHiddenFunction()
+textHiddenFunction();
 
-loginBtn.addEventListener('click', () => {
-  const form = new LoginForm('Вхід');
-  const confirmRegestration = async (closerCallbackFromModal) => {
+document.querySelector(".no-items").classList.remove("hidden");
+
+loginBtn.addEventListener("click", () => {
+  const form = new LoginForm("Вхід");
+  const confirmRegestration = async closerCallbackFromModal => {
     const body = form.getValues();
-    const { data } = await loginFunction(body)
-    localStorage.setItem('TOKEN', data)
-    closerCallbackFromModal()
-    checkLoginToken()
+    const { data } = await loginFunction(body);
+    localStorage.setItem("TOKEN", data);
+    closerCallbackFromModal();
+    checkLoginToken();
     renderElements();
-    document.querySelector('.no-items').classList.add('hidden');
-    textHiddenFunction()
-
+    document.querySelector(".no-items").classList.add("hidden");
+    textHiddenFunction();
   };
-  new LoginModal(form.getFormElement(), confirmRegestration, 'Увійти').render()
-})
+  new LoginModal(form.getFormElement(), confirmRegestration, "Увійти").render();
+});
 
 const selectElement = document.getElementById("prioritySelect");
 selectElement.addEventListener("change", selectFilterCard);
@@ -51,17 +52,27 @@ if (selectedFilter) {
 
 const addVisit = document.querySelector("#addVisitButton");
 
-addVisit.addEventListener('click', () => {
-
+addVisit.addEventListener("click", () => {
   const form = new CreateVisitForm("Створити візит", checkOptions);
 
-  const confirmCreateVisitCard = async (closerCallbackFromModal) => {
+  const confirmCreateVisitCard = async closerCallbackFromModal => {
     const body = form.getAllUserInfo();
     const { data } = await postElement(body);
-    closerCallbackFromModal()
+    closerCallbackFromModal();
 
-    new DashBoardCard(data.doctor, data["full_name"], data.id, data, editModalFunction, textHiddenFunction).render()
-    textHiddenFunction()
+    new DashBoardCard(
+      data.doctor,
+      data["full_name"],
+      data.id,
+      data,
+      editModalFunction,
+      textHiddenFunction
+    ).render();
+    textHiddenFunction();
   };
-  new LoginModal(form.getFormElement(), confirmCreateVisitCard, "Створити").render()
+  new LoginModal(
+    form.getFormElement(),
+    confirmCreateVisitCard,
+    "Створити"
+  ).render();
 });
