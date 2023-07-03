@@ -2,58 +2,58 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" sizes="16x16"
-    href="./images/depositphotos_130620328-stock-illustration-meditation-icon-human-meditating-in.jpg">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
-  <title>Візити до лікаря</title>
-  <link rel="stylesheet" href="./css/main.css" />
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script type="module" src="./js/main.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="./images/depositphotos_130620328-stock-illustration-meditation-icon-human-meditating-in.jpg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <title>Візити до лікаря</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./js/main.js"></script>
 
 <body>
-  <header>
-    <div class="logo">
-      <img src="./images/logo.svg" alt="Логотип" />
-      <h1 class="logo-title">Медікарта</h1>
+    <header>
+        <div class="logo">
+            <img src="./images/logo.svg" alt="Логотип" />
+            <h1 class="logo-title">Медікарта</h1>
+        </div>
+        <div class="btns">
+            <button id="addVisitButton">Додати візит</button>
+            <button id="loginButton">Вхід</button>
+            <button id="logOutButton">Вихід</button>
+        </div>
+    </header>
+
+    <div class="filter-form">
+        <input type="text" id="searchInput" placeholder="Пошук" />
+        <select id="statusSelect">
+            <option value="">Статус</option>
+            <option value="open">Відкритий</option>
+            <option value="done">Виконаний</option>
+        </select>
+        <select id="prioritySelect">
+            <option value="prior">Пріоритет</option>
+            <option value="high">Високий</option>
+            <option value="normal">Звичайний</option>
+            <option value="low">Низький</option>
+        </select>
     </div>
-    <div class="btns">
-      <button id="addVisitButton">Додати візит</button>
-      <button id="loginButton">Вхід</button>
-      <button id="logOutButton">Вихід</button>
+
+    <div class="no-items">No items have been added.</div>
+
+    <div id="visitList" class="visit-list">
     </div>
-  </header>
 
-  <div class="filter-form">
-    <input type="text" id="searchInput" placeholder="Пошук" />
-    <select id="statusSelect">
-      <option value="">Статус</option>
-      <option value="open">Відкритий</option>
-      <option value="done">Виконаний</option>
-    </select>
-    <select id="prioritySelect">
-      <option value="prior">Пріоритет</option>
-      <option value="high">Високий</option>
-      <option value="normal">Звичайний</option>
-      <option value="low">Низький</option>
-    </select>
-  </div>
+    <!-- Модальне вікно для входу -->
+    <div id="loginModal" class="modal">
+    </div>
 
-  <div class="no-items">No items have been added.</div>
-
-  <div id="visitList" class="visit-list">
-  </div>
-
-  <!-- Модальне вікно для входу -->
-  <div id="loginModal" class="modal">
-  </div>
-
-  <!-- Модальне вікно для створення візиту -->
-  <div id="createVisitModal">
-    <!-- Вміст модального вікна для створення візиту -->
-  </div>
+    <!-- Модальне вікно для створення візиту -->
+    <div id="createVisitModal">
+        <!-- Вміст модального вікна для створення візиту -->
+    </div>
 </body>
 
 </html>
