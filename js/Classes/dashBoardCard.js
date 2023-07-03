@@ -29,6 +29,7 @@ export default class DashBoardCard {
     <p class="content-higher-pressure-number content-card"><span class="key-card">Тиск:</span>${this.userObject["higher_pressure_number"]}/${this.userObject["lower_pressure_number"]}</p>
     <p class="content-heart-diseases content-card"><span class="key-card">Перенесені хвороби серця:</span>${this.userObject["heart_diseases"]}</p>
     <p class="content-mass content-card"><span class="key-card">Індекс маси тіла:</span>${this.userObject["body_mass_index"]}</p>
+    <p class="content-age content-card"><span class="key-card">Вік:</span>${this.userObject["age"]}</p>
     `;
 
     this.dentist = `
