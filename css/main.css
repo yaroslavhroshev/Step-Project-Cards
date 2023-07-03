@@ -1,0 +1,319 @@
+/* Reset стилів */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Загальні стилі для сторінки */
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+#logOutButton {
+  display: none;
+}
+
+#addVisitButton {
+  display: none;
+}
+
+.filter-form {
+  display: none;
+  align-items: center;
+  margin: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+input[type="text"],
+select, textarea {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.no-items {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: #888;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  text-align: center;
+  display: none;
+}
+
+.hidden {
+  display: block;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.modal-content {
+  background-color: #ebebeb;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+  z-index: 2;
+}
+
+.close {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+  left: 95%;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: red;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.modal-button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background-color: #45a049;
+}
+
+/*CreateVisit*/
+
+.create-visit-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 3px;
+  padding-bottom: 5px;
+}
+
+.create-visit-form__additional-options, .create-visit-form__additional-options div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.create-visit-form__additional-options input {
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.create-visit-form__error-message {
+  font-size: 15px;
+  color: red;
+  display: none;
+}
+/* Стилі для карток візитів  */
+
+.visit-list {
+  margin: 25px 10px 10px 10px;
+}
+
+.visit-list.hidden {
+  display: none;
+}
+
+.card {
+  width: 100%;
+  border-radius: 20px;
+  background-color: #f4f1f1;
+  padding: 20px;
+  margin-bottom: 15px;
+  cursor: move;
+}
+
+.card:hover {
+  background-color: #dfdfdf;
+  box-shadow: 0 0 10px rgba(36, 211, 45, 0.9);
+}
+
+.content-card {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.key-card {
+  font-weight: 600;
+  font-size: 20px;
+  margin-right: 10px;
+  color: #000;
+}
+
+.content-data {
+  color: #ff0000;
+}
+
+.content-doctor {
+  color: #4caf50;
+}
+
+.content-age {
+  color: #4caf50;
+}
+
+.content-full-name {
+  color: #4caf50;
+}
+
+.content-mass {
+  color: #ff0000;
+}
+
+.content-priority {
+  color: #ff0000;
+}
+
+.content-heart-diseases {
+  color: #ff0000;
+}
+
+.content-higher-pressure-number {
+  color: #ff0000;
+}
+
+.content-heart-diseases {
+  color: #ff0000;
+}
+
+.content-description {
+  color: #4caf50;
+}
+
+.content-puprpose {
+  color: #4caf50;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.edit-button {
+  background-color: #4acd3f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.edit-button:hover {
+  box-shadow: 0 0 10px rgba(220, 29, 29, 0.9);
+}
+
+.delete-button {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  box-shadow: 0 0 10px rgba(16, 214, 19, 0.9);
+}
+
+.show-more-button, .hide-button {
+  background-color: #337ab7;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.show-more-button:hover, .hide-button:hover {
+  box-shadow: 0 0 10px rgba(51, 122, 183, 0.9);
+}
+
+.highlight {
+  border: 2px dashed #2acd1b;
+}
