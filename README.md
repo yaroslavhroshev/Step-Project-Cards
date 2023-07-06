@@ -29,7 +29,5 @@
 
 
 Test account:
-
 login - developers@gmail.com  
-
 password - 1234  
