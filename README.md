@@ -28,6 +28,6 @@
 Реалізував функціонал кнопки "Показати більше" та кнопки "Редагувати".
 
 
-Test account:
+Test account:  
 login - developers@gmail.com  
 password - 1234  
